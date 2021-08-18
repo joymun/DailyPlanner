@@ -1,4 +1,4 @@
-import PropTypes from "prop-types";
+
 
 export function Header({ title }) {
   return (
@@ -12,6 +12,3 @@ Header.defaultProps = {
   title: " Task Tracker"
 };
 
-Header.PropTypes = {
-  title: PropTypes.string.isRequired
-};

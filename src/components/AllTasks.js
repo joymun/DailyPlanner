@@ -1,8 +1,10 @@
-export function AllTasks({ task, onDelete }) {
+import {Task} from './Task'
+
+export function AllTasks({ tasks, onDelete }) {
   return (
     <>
-      {task.map((task) => (
-        <task key={task.id} tasks={task} onDelete={onDelete} />
+      {tasks.map((task, index) => (
+        <Task key={index} task={task} onDelete={onDelete} />
       ))}
     </>
   );

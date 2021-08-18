@@ -2,8 +2,20 @@ import { useState } from "react";
 
 export function AddTask({ onAdd }) {
   const [text, setText] = useState("");
+  const onSubmit = (event) => {
+    event.preventDefault()
+
+    if(!text) {
+      alert("please add in today's task")
+      return
+    }
+
+    onAdd({text})
+    setText('')
+  }
+
   return (
-    <form>
+    <form onSubmit={onSubmit}>
       <div>
         <label>Task</label>
         <input
