@@ -7,7 +7,7 @@ export function AddEntry( {onAddEntry}) {
   const onSubmit = (event) => {
     event.preventDefault()
 
-    if(!diary && !mood) {
+    if(!diary || !mood) {
       alert("please add in today's mood and diary entry")
       return
     }

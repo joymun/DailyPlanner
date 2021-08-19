@@ -8,23 +8,13 @@ import { AllTasks } from "./components/AllTasks";
 import { Task } from "./components/Task";
 import {AddEntry} from "./components/AddEntry";
 import {AllEntries} from "./components/AllEntries";
+import {Day} from "./components/Day";
 
 export default function App() {
   const currDate = new Date().toLocaleDateString();
-  const [tasks, setTasks] = useState([
-    {
-      id:1,
-      text:"wow"
-    }
-  ]);
-  const [entries, setEntries] = useState([
-    {
-      id:5,
-      mood:"happy",
-      diary:"entry"
-    }
-
-  ]);
+  const [tasks, setTasks] = useState([]);
+  const [entries, setEntries] = useState([]);
+  const [days, setDays] = useState([])
 
   const onClick = () => {
     console.log("click");
@@ -41,7 +31,13 @@ export default function App() {
     const { v4: uuidv4 } = require('uuid');
     const id = uuidv4()
     const newEntry = {id, ...entry}
-    setEntries([...entries, newEntry])
+    setEntries([newEntry])
+  }
+  const addDay = (day) => {
+    const { v4: uuidv4 } = require('uuid');
+    const id = uuidv4()
+    const newDay = {id, ...day}
+    setDays([...days, newDay])
   }
 
   const deleteTask = (id) => {
@@ -55,6 +51,7 @@ export default function App() {
       <AddEntry onAddEntry={addEntry} />
       <AllTasks tasks={tasks} onDelete={deleteTask} />
       <AllEntries entries={entries} onDelete={deleteTask} />
+      <Day />
     </div>
   );
 }
