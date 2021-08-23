@@ -4,10 +4,8 @@ import { Header } from "./components/Header.js";
 import { Button } from "./components/Button";
 import { Entry } from "./components/Entry";
 import { AddTask } from "./components/AddTask";
-import { AllTasks } from "./components/AllTasks";
 import { Task } from "./components/Task";
 import {AddEntry} from "./components/AddEntry";
-import {AllEntries} from "./components/AllEntries";
 import {Day} from "./components/Day";
 
 export default function App() {
@@ -30,15 +28,15 @@ export default function App() {
   const addEntry = (entry) => {
     const { v4: uuidv4 } = require('uuid');
     const id = uuidv4()
-    const newEntry = {id, ...entry}
+    const newEntry = {id, entry}
     setEntries([newEntry])
   }
-  const addDay = (day) => {
-    const { v4: uuidv4 } = require('uuid');
-    const id = uuidv4()
-    const newDay = {id, ...day}
-    setDays([...days, newDay])
+  function addDay() {
+    console.log("it is working")
+
   }
+
+
 
   const deleteTask = (id) => {
     console.log("delete, id");
@@ -49,9 +47,7 @@ export default function App() {
       {currDate}
       <AddTask onAdd={addTask}/>
       <AddEntry onAddEntry={addEntry} />
-      <AllTasks tasks={tasks} onDelete={deleteTask} />
-      <AllEntries entries={entries} onDelete={deleteTask} />
-      <Day />
+      <Day tasks={tasks} entries={entries} onDelete={deleteTask}/>
     </div>
   );
 }
